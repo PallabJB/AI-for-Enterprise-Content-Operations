@@ -1,4 +1,4 @@
-# 🚀 Antigravity AI: Enterprise Content Operations Swarm
+# 🚀 Enterprise Content Operations Swarm
 
 > **Automate the full lifecycle of enterprise content: creation, compliance, localization, and multi-channel distribution.**
 
@@ -88,9 +88,9 @@ c:\et_ai_hackathon
 
 ## 📄 Documentation
 Detailed technical and business docs are located in the project's brain directory:
-- [System Architecture](file:///C:/Users/KIIT/.gemini/antigravity/brain/e633ed81-5fc5-4ce4-b776-6cb04825e2ab/architecture_documentation.md)
-- [Business Impact Model](file:///C:/Users/KIIT/.gemini/antigravity/brain/e633ed81-5fc5-4ce4-b776-6cb04825e2ab/impact_model.md)
-- [Pitch Script](file:///C:/Users/KIIT/.gemini/antigravity/brain/e633ed81-5fc5-4ce4-b776-6cb04825e2ab/pitch_video_script.md)
+- [System Architecture](https://drive.google.com/file/d/1l8PRdWmdJSz2wHRIy23-MjMOeoBpgL0-/view?usp=sharing)
+- [Business Impact Model](https://drive.google.com/file/d/1IJIDRTBZgT6-Nj9q7L5WKsKKHv-B_ASl/view?usp=sharing)
+
 
 ---
 *Built with ❤️ for the AI Hackathon.*
