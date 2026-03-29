@@ -165,145 +165,158 @@ const App = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="max-w-6xl mx-auto space-y-10"
+                className="w-full space-y-10 px-4"
               >
-                <div className="flex justify-between items-end">
+                {/* Header Section */}
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                   <div className="space-y-1">
-                    <h1 className="text-4xl font-extrabold text-white tracking-tight">Enterprise Content Pipeline</h1>
-                    <p className="text-slate-400 text-lg">Multi-agent orchestration for brand-aligned content scale.</p>
+                    <h1 className="text-5xl font-extrabold text-white tracking-tighter italic gradient-text">OPERATIONS CENTER</h1>
+                    <p className="text-slate-400 text-lg">Autonomous multi-agent orchestration for enterprise-scale content.</p>
                   </div>
                   <button 
                     onClick={() => setIsCreating(true)}
-                    className="group flex items-center bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-2xl font-bold shadow-xl shadow-indigo-600/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                    className="group flex items-center bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-3xl font-black shadow-2xl shadow-indigo-600/30 transition-all transform hover:-translate-y-1 active:translate-y-0"
                   >
-                    <Plus size={20} className="mr-2 group-hover:rotate-90 transition-transform duration-300" />
-                    New Workflow
+                    <Plus size={24} className="mr-3 group-hover:rotate-90 transition-transform duration-300" />
+                    INITIALIZE SWARM
                   </button>
                 </div>
 
                 {/* Performance Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                   {[
-                    { label: "Active Pipeline", value: pipelines.length || "0", icon: Activity, color: "text-indigo-400", bg: "bg-indigo-400/10" },
-                    { label: "Governance Score", value: "98.2", icon: ShieldCheck, color: "text-emerald-400", bg: "bg-emerald-400/10" },
-                    { label: "Total Reach", value: "4.2M", icon: Globe2, color: "text-blue-400", bg: "bg-blue-400/10" },
-                    { label: "Resource ROI", value: "x4.2", icon: BarChart3, color: "text-purple-400", bg: "bg-purple-400/10" },
+                    { label: "Active Pipelines", value: pipelines.length || "0", icon: Activity, color: "text-indigo-400", bg: "bg-indigo-400/10", desc: "Real-time task swarms" },
+                    { label: "Compliance Index", value: "98.2%", icon: ShieldCheck, color: "text-emerald-400", bg: "bg-emerald-400/10", desc: "Automated brand safety" },
+                    { label: "Global Reach", value: "4.2M", icon: Globe2, color: "text-blue-400", bg: "bg-blue-400/10", desc: "Cross-locale impressions" },
+                    { label: "Cycle Reduction", value: "x8.4", icon: Clock, color: "text-purple-400", bg: "bg-purple-400/10", desc: "Efficiency multiplier" },
                   ].map((stat, i) => (
-                    <div key={i} className="bg-slate-900/40 border border-slate-800/60 p-6 rounded-[2rem] hover:bg-slate-900/60 transition-colors backdrop-blur-sm group">
-                      <div className={`w-12 h-12 rounded-2xl ${stat.bg} ${stat.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                        <stat.icon size={24} />
+                    <div key={i} className="bg-slate-900/40 border border-slate-800/60 p-8 rounded-[2.5rem] hover:bg-slate-900/60 transition-all backdrop-blur-md group hover:border-indigo-500/30">
+                      <div className={`w-14 h-14 rounded-2xl ${stat.bg} ${stat.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                        <stat.icon size={28} />
                       </div>
-                      <p className="text-3xl font-bold text-white mb-1">{stat.value}</p>
+                      <p className="text-4xl font-black text-white mb-2 tracking-tight">{stat.value}</p>
                       <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">{stat.label}</p>
+                      <p className="text-[10px] text-slate-600 mt-2 font-medium">{stat.desc}</p>
                     </div>
                   ))}
                 </div>
 
                 {/* Pipeline List */}
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-sm font-bold text-slate-500 uppercase tracking-[0.2em]">Active Workflows</h3>
-                    <div className="flex items-center space-x-2 text-xs text-indigo-400 font-bold px-3 py-1 bg-indigo-400/10 rounded-full">
-                       <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-ping"></span>
-                       <span>REAL-TIME UPDATE</span>
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between px-2">
+                    <h3 className="text-sm font-black text-slate-500 uppercase tracking-[0.3em]">Operational Pipeline</h3>
+                    <div className="flex items-center space-x-2 text-xs text-indigo-400 font-bold px-4 py-2 bg-indigo-400/5 rounded-full border border-indigo-400/10">
+                       <span className="w-2 h-2 bg-indigo-400 rounded-full animate-ping"></span>
+                       <span>SWARM ACTIVE</span>
                     </div>
                   </div>
                   
                   {pipelines.length === 0 ? (
-                    <div className="bg-slate-900/20 border-2 border-dashed border-slate-800 rounded-[2.5rem] p-20 flex flex-col items-center justify-center text-center">
-                       <div className="w-16 h-16 bg-slate-900 rounded-full flex items-center justify-center text-slate-700 mb-4">
-                          <Layers size={32} />
+                    <div className="bg-slate-900/10 border-2 border-dashed border-slate-800/50 rounded-[3rem] p-24 flex flex-col items-center justify-center text-center backdrop-blur-sm">
+                       <div className="w-20 h-20 bg-slate-900 rounded-full flex items-center justify-center text-slate-700 mb-6 shadow-inner">
+                          <Layers size={40} />
                        </div>
-                       <h3 className="text-xl font-bold text-slate-400">No active workflows</h3>
-                       <p className="text-slate-600 mt-2 max-w-xs">Start a new workflow to see the multi-agent orchestration in action.</p>
+                       <h3 className="text-2xl font-bold text-slate-400 italic tracking-tight">System Idle</h3>
+                       <p className="text-slate-600 mt-2 max-w-sm mx-auto font-medium">Connect internal knowledge assets to begin autonomous multi-channel generation.</p>
                     </div>
                   ) : (
                     pipelines.map((pipe) => (
                       <motion.div 
                         layout
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
                         key={pipe.id} 
-                        className="bg-slate-900/50 border border-slate-800 p-6 rounded-[2rem] hover:border-indigo-500/30 transition-all group relative overflow-hidden"
+                        className="bg-slate-900/40 border border-slate-800/80 p-8 rounded-[3rem] hover:border-indigo-500/40 transition-all group relative overflow-hidden backdrop-blur-xl"
                       >
-                        <div className="absolute top-0 right-0 p-6 flex space-x-2">
-                           <div className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${pipe.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-indigo-500/20 text-indigo-400'} border border-current opacity-30`}>
+                        {/* Status chip */}
+                        <div className="absolute top-8 right-8 flex space-x-3 items-center">
+                           <div className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] ${pipe.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/20' : 'bg-indigo-500/20 text-indigo-400 border-indigo-500/20'} border`}>
                              {pipe.status}
                            </div>
-                           <button className="text-slate-600 hover:text-white transition-colors">
-                             <MoreVertical size={18} />
+                           <button className="text-slate-600 hover:text-white transition-colors bg-slate-950/50 p-2 rounded-xl">
+                             <MoreVertical size={20} />
                            </button>
                         </div>
 
-                        <div className="flex items-start mb-8">
-                          <div className={`p-4 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 text-indigo-400 mr-5`}>
-                            <FileEdit size={28} />
+                        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-10">
+                          <div className="flex items-start">
+                            <div className="p-5 rounded-[1.5rem] bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-indigo-600/10 text-indigo-400 mr-8 shadow-xl border border-indigo-500/20">
+                              <FileEdit size={36} />
+                            </div>
+                            <div>
+                              <h4 className="font-black text-2xl text-white group-hover:text-indigo-400 transition-colors duration-300 italic tracking-tight uppercase">{pipe.title}</h4>
+                              <div className="flex flex-wrap items-center text-xs text-slate-500 space-x-6 mt-3 font-bold tracking-wider uppercase">
+                                <span className="flex items-center"><Clock size={16} className="mr-2 text-indigo-500/50" /> {new Date(pipe.created_at).toLocaleTimeString()}</span>
+                                <span className="flex items-center"><Globe2 size={16} className="mr-2 text-indigo-500/50" /> {pipe.target_locales.join(' ')}</span>
+                                <span className="flex items-center"><Send size={16} className="mr-2 text-indigo-500/50" /> {pipe.target_channels.join(', ')}</span>
+                              </div>
+                            </div>
                           </div>
-                          <div>
-                            <h4 className="font-bold text-xl text-white group-hover:text-indigo-400 transition-colors duration-300">{pipe.title}</h4>
-                            <div className="flex items-center text-sm text-slate-500 space-x-4 mt-1">
-                              <span className="flex items-center"><Clock size={14} className="mr-1.5" /> Created {new Date(pipe.created_at).toLocaleTimeString()}</span>
-                              <span className="flex items-center"><Globe2 size={14} className="mr-1.5" /> {pipe.target_locales.join(', ')}</span>
+
+                          {/* Steps Visualization */}
+                          <div className="flex-1 max-w-2xl relative">
+                            <div className="absolute top-1/2 left-0 w-full h-[1px] bg-slate-800/50 -translate-y-1/2 -z-10"></div>
+                            <div className="grid grid-cols-4 gap-12 relative z-10 p-2">
+                              {pipe.steps.map((step: any, idx: number) => {
+                                const isCompleted = step.status === 'completed' || step.status === 'manual_review';
+                                const isRunning = step.status === 'running';
+                                return (
+                                  <div key={step.step_id} className="flex flex-col items-center group/step">
+                                    <div className={`w-16 h-16 rounded-[1.25rem] flex items-center justify-center transition-all duration-700 border-2 ${
+                                      isCompleted ? 'bg-indigo-600 border-indigo-400 text-white shadow-[0_0_30px_rgba(79,70,229,0.4)]' :
+                                      isRunning ? 'bg-slate-950 border-indigo-500 text-indigo-400 shadow-[0_0_20px_rgba(79,70,229,0.2)] animate-pulse scale-110' :
+                                      'bg-slate-950 border-slate-800 text-slate-700'
+                                    }`}>
+                                      {isCompleted ? <CheckCircle2 size={24} /> : 
+                                       isRunning ? <Activity size={24} className="animate-spin duration-[3000ms]" /> : 
+                                       idx === 0 ? <Plus size={24} /> : 
+                                       idx === 1 ? <ShieldCheck size={24} /> :
+                                       idx === 2 ? <Languages size={24} /> :
+                                       <CheckCircle2 size={24} />}
+                                    </div>
+                                    <div className="mt-4 text-center">
+                                      <p className={`text-[10px] font-black uppercase tracking-widest ${isCompleted ? 'text-white' : isRunning ? 'text-indigo-400' : 'text-slate-700'}`}>
+                                        {step.agent_name.split(' ')[0]}
+                                      </p>
+                                    </div>
+                                  </div>
+                                );
+                              })}
                             </div>
                           </div>
                         </div>
-                        
-                        {/* Multi-Agent Steps Visualization */}
-                        <div className="relative isolate">
-                          {/* Connection Line */}
-                          <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-800 -translate-y-1/2 -z-10"></div>
-                          
-                          <div className="grid grid-cols-4 gap-6 relative z-10">
-                            {pipe.steps.map((step: any, idx: number) => {
-                              const isCompleted = step.status === 'completed' || step.status === 'manual_review';
-                              const isRunning = step.status === 'running';
-                              
-                              return (
-                                <div key={step.step_id} className="flex flex-col items-center">
-                                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 border-2 ${
-                                    isCompleted ? 'bg-indigo-600 border-indigo-400 text-white shadow-[0_0_20px_rgba(79,70,229,0.3)]' :
-                                    isRunning ? 'bg-slate-900 border-indigo-500 text-indigo-400 shadow-[0_0_15px_rgba(79,70,229,0.2)] animate-pulse scale-110' :
-                                    'bg-slate-950 border-slate-800 text-slate-600'
-                                  }`}>
-                                    {isCompleted ? <CheckCircle2 size={24} /> : 
-                                     isRunning ? <Activity size={24} /> : 
-                                     idx === 0 ? <Plus size={24} /> : 
-                                     idx === 1 ? <ShieldCheck size={24} /> :
-                                     idx === 2 ? <Languages size={24} /> :
-                                     <ArrowRight size={24} />}
-                                  </div>
-                                  <div className="mt-3 text-center">
-                                    <p className={`text-xs font-bold uppercase tracking-tight ${isCompleted ? 'text-white' : isRunning ? 'text-indigo-400' : 'text-slate-500'}`}>
-                                      {step.agent_name.split(' ')[0]}
-                                    </p>
-                                    <p className="text-[10px] text-slate-600 font-medium">
-                                      {isCompleted ? 'Finished' : isRunning ? 'Processing...' : 'Waitlist'}
-                                    </p>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
 
-                        {/* Summary info if completed */}
+                        {/* Summary Section */}
                         {pipe.status === 'completed' && (
                           <motion.div 
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
-                            className="mt-8 pt-6 border-t border-slate-800/50 grid grid-cols-2 gap-6"
+                            className="mt-10 pt-10 border-t border-slate-800/50 grid grid-cols-1 md:grid-cols-3 gap-8"
                           >
-                            <div className="bg-slate-950/50 p-4 rounded-xl border border-slate-800/50">
-                              <h5 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Content Preview</h5>
-                              <p className="text-xs text-slate-400 line-clamp-2">
-                                {pipe.current_draft?.LinkedIn || "Pending extraction..."}
+                            <div className="md:col-span-2 bg-slate-950/40 p-6 rounded-3xl border border-slate-800/50 hover:bg-slate-950/60 transition-colors">
+                              <h5 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center">
+                                <FileEdit size={14} className="mr-2 text-indigo-500" />
+                                GENERATED CONTENT PREVIEW
+                              </h5>
+                              <p className="text-sm text-slate-300 leading-relaxed font-medium italic">
+                                "{pipe.current_draft?.LinkedIn || "Finalizing knowledge extraction..."}"
                               </p>
                             </div>
-                            <div className="bg-slate-950/50 p-4 rounded-xl border border-slate-800/50 flex justify-between items-center">
-                              <div>
-                                <h5 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Compliance</h5>
-                                <p className="text-sm font-bold text-emerald-400 italic">Score: {pipe.compliance_report?.scores?.LinkedIn}%</p>
+                            <div className="bg-gradient-to-br from-slate-950/40 to-indigo-950/20 p-6 rounded-3xl border border-indigo-500/10 flex flex-col justify-between group-hover:border-indigo-500/30 transition-all">
+                              <div className="flex justify-between items-start">
+                                <div>
+                                  <h5 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-2 flex items-center">
+                                    <ShieldCheck size={14} className="mr-2 text-emerald-500" />
+                                    SAFETY COMPLIANCE
+                                  </h5>
+                                  <div className="flex items-baseline space-x-2">
+                                    <span className="text-4xl font-black text-white tracking-tighter">{pipe.compliance_report?.scores?.LinkedIn || 100}%</span>
+                                    <span className="text-[10px] font-bold text-emerald-500 uppercase">SAFE</span>
+                                  </div>
+                                </div>
                               </div>
-                              <button className="text-indigo-400 hover:text-white text-xs font-bold px-4 py-2 bg-indigo-500/10 rounded-lg transition-colors border border-indigo-500/20">
-                                REVIEW ASSETS
+                              <button className="w-full mt-6 py-4 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-black uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-indigo-600/20 transition-all transform hover:scale-[1.02]">
+                                REVIEW & PUBLISH
                               </button>
                             </div>
                           </motion.div>
@@ -314,15 +327,121 @@ const App = () => {
                 </div>
               </motion.div>
             ) : (
-              <div className="flex flex-col items-center justify-center h-full text-slate-500 space-y-4">
-                <div className="p-8 bg-slate-900/50 rounded-full border border-slate-800">
-                  <BarChart3 size={64} className="text-slate-700" />
+              <motion.div 
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                className="w-full h-full space-y-10 px-4"
+              >
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                  <div className="space-y-1">
+                    <h1 className="text-5xl font-extrabold text-white tracking-tighter italic gradient-text">CONTENT INTELLIGENCE</h1>
+                    <p className="text-slate-400 text-lg">Real-time performance analytics across the automated swarm lifecycle.</p>
+                  </div>
                 </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-bold text-slate-300">Insights Dashboard</h3>
-                  <p className="text-slate-500 max-w-sm mx-auto mt-2">Connecting to enterprise datasets... This module will show cross-channel engagement and ROI metrics.</p>
+
+                {/* Big Stats Chart Mock */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                  <div className="lg:col-span-2 bg-slate-900/40 border-2 border-slate-800/40 p-10 rounded-[4rem] relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-10 flex flex-col items-end">
+                      <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1 text-right">TOTAL IMPRESSIONS</p>
+                      <p className="text-5xl font-black text-white tracking-tighter">4.24M</p>
+                      <div className="flex items-center text-emerald-500 mt-2 font-black text-sm">
+                        <Activity size={16} className="mr-2" />
+                        +18.4% WoW
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-xl font-black text-white tracking-tight mb-12 italic uppercase">Channel Growth Distribution</h3>
+                    
+                    <div className="h-64 flex items-end justify-between space-x-4">
+                      {[40, 25, 60, 45, 90, 55, 100, 80, 65, 45, 75, 50, 85].map((h, i) => (
+                        <motion.div 
+                          key={i}
+                          initial={{ height: 0 }}
+                          animate={{ height: `${h}%` }}
+                          transition={{ delay: i * 0.05, duration: 1, ease: "easeOut" }}
+                          className={`flex-1 rounded-2xl transition-all duration-500 shadow-2xl ${
+                            i === 6 ? 'bg-indigo-500 shadow-indigo-500/40 scale-110' : 'bg-slate-800 group-hover:bg-slate-700'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-10">
+                    <div className="flex-1 bg-gradient-to-br from-emerald-600 to-teal-800 p-8 rounded-[3rem] shadow-2xl flex flex-col justify-between group">
+                       <div className="flex justify-between items-start">
+                          <h4 className="font-black text-white italic tracking-widest text-lg">ROI SCORE</h4>
+                          <Zap size={24} className="text-emerald-300" />
+                       </div>
+                       <div>
+                          <p className="text-6xl font-black text-white tracking-tighter mb-2 italic">x12.4</p>
+                          <p className="text-xs font-bold text-white/70 uppercase tracking-widest">Revenue Impact Per Token</p>
+                       </div>
+                    </div>
+                    <div className="flex-1 bg-slate-900/40 border-2 border-slate-800/40 p-8 rounded-[3rem] shadow-2xl flex flex-col justify-between overflow-hidden relative">
+                       <div className="absolute top-1/2 left-1/2 w-40 h-40 bg-indigo-500/10 blur-[60px] rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+                       <div className="flex justify-between items-start relative z-10">
+                          <h4 className="font-black text-slate-400 italic tracking-widest text-lg">CYCLE HEALTH</h4>
+                          <Clock size={24} className="text-indigo-400" />
+                       </div>
+                       <div className="relative z-10">
+                          <p className="text-5xl font-black text-white tracking-tighter mb-2 italic">98.4%</p>
+                          <div className="h-1.5 w-full bg-slate-800 rounded-full mt-4">
+                            <motion.div 
+                              initial={{ width: 0 }}
+                              animate={{ width: "98.4%" }}
+                              transition={{ duration: 1.5, delay: 0.5 }}
+                              className="h-full bg-indigo-500 shadow-lg shadow-indigo-500/40"
+                            />
+                          </div>
+                          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mt-4">Efficiency Consistency</p>
+                       </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+
+                {/* Regional Map Placeholder Card */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                   <div className="bg-slate-900/40 border border-slate-800/60 p-10 rounded-[4rem] group hover:border-indigo-500/30 transition-all backdrop-blur-md">
+                      <h4 className="text-xs font-black text-slate-500 uppercase tracking-[0.3em] mb-8">Localization Efficiency</h4>
+                      <div className="space-y-6">
+                        {[
+                          { lang: "Spanish (ES-ES)", value: 98, color: "bg-orange-500" },
+                          { lang: "French (FR-FR)", value: 96, color: "bg-blue-500" },
+                          { lang: "German (DE-DE)", value: 92, color: "bg-yellow-500" },
+                          { lang: "English (UK-EN)", value: 99, color: "bg-red-500" },
+                        ].map((item, i) => (
+                          <div key={i} className="space-y-2">
+                            <div className="flex justify-between text-xs font-bold uppercase tracking-wider">
+                              <span className="text-slate-400">{item.lang}</span>
+                              <span className="text-white">{item.value}%</span>
+                            </div>
+                            <div className="h-3 bg-slate-950/50 rounded-xl overflow-hidden p-[2px]">
+                               <motion.div 
+                                 initial={{ width: 0 }}
+                                 animate={{ width: `${item.value}%` }} 
+                                 className={`h-full ${item.color} rounded-sm opacity-80 shadow-lg`}
+                               />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                   </div>
+                   <div className="bg-slate-900/40 border border-slate-800/60 p-10 rounded-[4rem] flex flex-col items-center justify-center text-center group hover:border-indigo-500/30 transition-all backdrop-blur-md relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/5 to-transparent"></div>
+                      <div className="p-8 bg-slate-950/50 rounded-[2.5rem] border border-slate-800 mb-6 shadow-2xl relative z-10">
+                        <Globe2 size={48} className="text-indigo-400" />
+                      </div>
+                      <h4 className="text-2xl font-black text-white italic tracking-tight mb-2 relative z-10">Global Distribution Map</h4>
+                      <p className="text-slate-500 text-sm font-bold uppercase tracking-widest relative z-10">Visualizing 4,240,000 Nodes Globally</p>
+                      <button className="mt-8 px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white text-xs font-black uppercase tracking-widest rounded-2xl transition-all relative z-10 border border-slate-700">
+                        EXPAND WORLD VIEW
+                      </button>
+                   </div>
+                </div>
+              </motion.div>
             )}
           </AnimatePresence>
         </div>
